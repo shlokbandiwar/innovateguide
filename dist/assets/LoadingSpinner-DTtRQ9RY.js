@@ -1,2 +1,0 @@
-import{j as r}from"./index-8mQHzY7E.js";function i({size:s="md",className:a=""}){const e={sm:"w-5 h-5 border-2",md:"w-8 h-8 border-3",lg:"w-12 h-12 border-4"};return r.jsxs("div",{className:`flex items-center justify-center py-6 ${a}`,role:"status","aria-label":"Loading content",children:[r.jsx("div",{className:`${e[s]||e.md} border-primary/20 border-t-primary rounded-full animate-spin`}),r.jsx("span",{className:"sr-only",children:"Loading..."})]})}export{i as L};
-//# sourceMappingURL=LoadingSpinner-DTtRQ9RY.js.map

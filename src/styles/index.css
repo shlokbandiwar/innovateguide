@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Scrollbar removal utilities */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Global Form Input Customization */
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  select,
+  textarea {
+    background-color: #FFFFFF !important;
+    border: 1px solid #D6DDE5 !important;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #1B5573 !important;
+    --tw-ring-color: #1B5573 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(27, 85, 115, 0.15) !important;
+  }
+
+  /* Default interactive transitions */
+  a, button, input, select, textarea {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+}
+
+@layer utilities {
+  /* Custom vector grid alignment background overlay */
+  .bg-grid-dots {
+    background-size: 30px 30px;
+    background-image: radial-gradient(circle, rgba(27,85,115,0.07) 1px, transparent 1.5px);
+  }
+  .bg-grid-dots-white {
+    background-size: 30px 30px;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1.5px);
+  }
+}
+

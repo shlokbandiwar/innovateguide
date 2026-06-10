@@ -1,0 +1,136 @@
+export const MOCK_CATEGORIES = [
+  {
+    id: "cat-web",
+    label: "Websites",
+    iconName: "language",
+    projectsCount: 142,
+    slug: "websites"
+  },
+  {
+    id: "cat-mobile",
+    label: "Mobile Apps",
+    iconName: "phone_iphone",
+    projectsCount: 89,
+    slug: "mobile-apps"
+  },
+  {
+    id: "cat-ecommerce",
+    label: "E-Commerce",
+    iconName: "shopping_cart",
+    projectsCount: 64,
+    slug: "e-commerce"
+  },
+  {
+    id: "cat-dashboards",
+    label: "Admin Dashboards",
+    iconName: "dashboard",
+    projectsCount: 110,
+    slug: "admin-dashboards"
+  },
+  {
+    id: "cat-ai-ml",
+    label: "AI & ML",
+    iconName: "psychology",
+    projectsCount: 45,
+    slug: "ai-ml"
+  },
+  {
+    id: "cat-cloud",
+    label: "Cloud & DevOps",
+    iconName: "cloud",
+    projectsCount: 38,
+    slug: "cloud-devops"
+  }
+];
+
+export const MOCK_PROJECTS = [
+  {
+    id: "proj-1",
+    title: "SaaS Analytics Dashboard - Next.js & Tailwind CSS",
+    price: 49,
+    rating: 4.8,
+    reviewsCount: 32,
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+    category: "admin-dashboards",
+    techStack: ["Next.js", "Tailwind CSS", "Recharts", "TypeScript"],
+    description: "A premium analytic layout featuring live chart integration, dark theme, interactive tables, and fully responsive side menus."
+  },
+  {
+    id: "proj-2",
+    title: "Fully Featured E-Commerce Marketplace Boilerplate",
+    price: 99,
+    rating: 4.9,
+    reviewsCount: 48,
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    category: "e-commerce",
+    techStack: ["React", "Node.js", "MongoDB", "Stripe"],
+    description: "Production-ready online shop with shopping cart, Stripe payment gateway integration, review widgets, and inventory control panels."
+  },
+  {
+    id: "proj-3",
+    title: "Flutter Mobile Delivery Application",
+    price: 79,
+    rating: 4.7,
+    reviewsCount: 19,
+    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
+    category: "mobile-apps",
+    techStack: ["Flutter", "Dart", "Firebase", "Google Maps"],
+    description: "A fast, native iOS and Android application with real-time location mapping, OTP phone login, and step-by-step order tracking."
+  },
+  {
+    id: "proj-4",
+    title: "AI Chatbot Integrator & API Gateway Client",
+    price: 129,
+    rating: 4.6,
+    reviewsCount: 15,
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    category: "ai-ml",
+    techStack: ["Python", "OpenAI API", "FastAPI", "React"],
+    description: "Integrates OpenAI models with custom context databases. Features stream responses, token calculation, and session management."
+  },
+  {
+    id: "proj-5",
+    title: "Developer Portfolio Template - Three.js Parallax",
+    price: 29,
+    rating: 4.9,
+    reviewsCount: 22,
+    imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80",
+    category: "websites",
+    techStack: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
+    description: "An immersive 3D resume portfolio with interactive timeline components, particle animations, and quick mail forms."
+  },
+  {
+    id: "proj-6",
+    title: "Kubernetes Setup CI/CD Configuration Script Library",
+    price: 149,
+    rating: 4.5,
+    reviewsCount: 8,
+    imageUrl: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=600&q=80",
+    category: "cloud-devops",
+    techStack: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"],
+    description: "Automate scalable deployments. Contains helm charts, terraform scripts, and multiple deployment environment configs."
+  }
+];
+
+export const MOCK_FAQS = [
+  {
+    id: "faq-1",
+    question: "How do I download the project templates after purchase?",
+    answer: "Immediately after checkout, you will receive a secure confirmation modal and a receipt email containing direct zip links. You can also access downloads from your Profile panel at any time."
+  },
+  {
+    id: "faq-2",
+    question: "Do developer authors provide ongoing project support?",
+    answer: "Yes, standard listing purchases include 6 months of repository maintenance and bug fixes. Developers can also be hired for custom integrations via our Custom Project Request route."
+  },
+  {
+    id: "faq-3",
+    question: "What is your refund policy?",
+    answer: "We support a 14-day warranty on codebase integrity. If a template fails to execute as documented and the seller is unable to troubleshoot, we will issue a complete refund."
+  },
+  {
+    id: "faq-4",
+    question: "How do I list my own software project for sale?",
+    answer: "Go to our 'Sell Project' dashboard page, input your listing metadata, set pricing terms, upload screenshots, attach your codebase zip file, and hit submit to make it live instantly."
+  }
+];

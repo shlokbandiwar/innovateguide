@@ -28,12 +28,10 @@ export default function TopNavbar({ onToggleMobileMenu, isMobileMenuOpen }) {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2" aria-label="InnovateGuide Home">
-          <svg className="w-8 h-8 text-primary" viewBox="0 0 100 100" fill="currentColor">
-            <circle cx="50" cy="50" r="45" className="fill-primary" />
-            <polygon points="30,40 70,50 30,60" className="fill-secondary" />
-          </svg>
-          <span className="font-bold text-lg tracking-tight text-neutral-dark dark:text-[#F1F5F9]">InnovateGuide</span>
-        </Link>
+  <img src="/src/assets/IG_LOGO.png" alt="InnovateGuide" className="h-8 w-auto block dark:hidden" />
+  <img src="/src/assets/IG_whiteLOGO.png" alt="InnovateGuide" className="h-8 w-auto hidden dark:block" />
+  <span className="font-bold text-lg tracking-tight text-neutral-dark dark:text-[#F1F5F9]">InnovateGuide</span>
+</Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">

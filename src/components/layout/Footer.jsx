@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <footer className="bg-[#F8FAFC] dark:bg-[#1E293B] text-neutral-muted dark:text-[#94A3B8] py-12 border-t border-gray-200 dark:border-[#334155] transition-colors duration-300">
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-8">
 
-        {/* Column 1: About */}
-        <div className="flex flex-col gap-4 sm:col-span-2 md:col-span-2">
+        {/* Column 1: About — full width on mobile, 2 cols on desktop */}
+        <div className="flex flex-col gap-4 col-span-2 md:col-span-2">
           <Link to="/" className="flex items-center gap-2" aria-label="InnovateGuide Home">
             <svg className="w-8 h-8 text-primary" viewBox="0 0 100 100" fill="currentColor">
               <circle cx="50" cy="50" r="45" className="fill-primary" />
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         {/* Column 4: Contact & Socials */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 col-span-2 md:col-span-1">
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-neutral-dark dark:text-[#E2E8F0] text-sm tracking-wider uppercase">Contact</h3>
             <ul className="flex flex-col gap-1 text-sm text-neutral-muted dark:text-[#94A3B8]">
@@ -67,6 +67,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Bottom Copyright */}

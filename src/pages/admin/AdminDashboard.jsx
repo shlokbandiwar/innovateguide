@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { projectsService } from '../../services/projectsService';
 
 const stats = [
   { label: 'Total Projects', value: '48', icon: 'folder_open', color: 'bg-blue-500' },
@@ -10,12 +11,6 @@ const stats = [
   { label: 'Custom Requests', value: '13', icon: 'build', color: 'bg-teal-500' },
 ];
 
-const pendingProjects = [
-  { id: 1, title: 'React CRM Dashboard', seller: 'dev_marco', price: '$79', submitted: '2 hours ago' },
-  { id: 2, title: 'Flutter Delivery App', seller: 'flutter_king', price: '$129', submitted: '5 hours ago' },
-  { id: 3, title: 'Next.js Blog Starter', seller: 'webcraft_io', price: '$39', submitted: '1 day ago' },
-];
-
 const recentRequests = [
   { id: 1, title: 'Custom E-Commerce with AR', user: 'sarah_j', budget: '$500', status: 'Open' },
   { id: 2, title: 'AI Chatbot Integration', user: 'marcus_t', budget: '$300', status: 'In Progress' },
@@ -23,6 +18,19 @@ const recentRequests = [
 ];
 
 export default function AdminDashboard() {
+  const [pendingProjects, setPendingProjects] = useState([]);
+
+  useEffect(() => {
+    projectsService.getProjects({ status: 'pending' }).then(res => {
+      setPendingProjects(res.slice(0, 3));
+    });
+  }, []);
+
+  const handleApproval = async (id, status) => {
+    await projectsService.updateProjectStatus(id, status);
+    setPendingProjects(prev => prev.filter(p => p.id !== id));
+  };
+
   return (
     <div className="flex flex-col gap-8">
 
@@ -56,23 +64,33 @@ export default function AdminDashboard() {
             <Link to="/admin/projects" className="text-xs text-primary hover:underline">View All</Link>
           </div>
           <div className="flex flex-col gap-3">
-            {pendingProjects.map(p => (
-              <div key={p.id} className="flex items-center justify-between py-2 border-b border-neutral-outline/10 last:border-0">
-                <div>
-                  <p className="text-xs font-semibold text-neutral-dark dark:text-white">{p.title}</p>
-                  <p className="text-xs text-neutral-muted">by {p.seller} · {p.submitted}</p>
+            {pendingProjects.length === 0 ? (
+              <p className="text-xs text-neutral-muted">No pending approvals.</p>
+            ) : (
+              pendingProjects.map(p => (
+                <div key={p.id} className="flex items-center justify-between py-2 border-b border-neutral-outline/10 last:border-0">
+                  <div>
+                    <p className="text-xs font-semibold text-neutral-dark dark:text-white">{p.title}</p>
+                    <p className="text-xs text-neutral-muted">by {p.seller} · {p.submitted}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-neutral-dark dark:text-white">{p.price}</span>
+                    <button
+                      onClick={() => handleApproval(p.id, 'approved')}
+                      className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-lg font-semibold hover:bg-green-200 transition"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      onClick={() => handleApproval(p.id, 'rejected')}
+                      className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-lg font-semibold hover:bg-red-200 transition"
+                    >
+                      Reject
+                    </button>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-neutral-dark dark:text-white">{p.price}</span>
-                  <button className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-lg font-semibold hover:bg-green-200 transition">
-                    Approve
-                  </button>
-                  <button className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-lg font-semibold hover:bg-red-200 transition">
-                    Reject
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
 

@@ -6,6 +6,8 @@ import { categoriesService } from '../services/categoriesService';
 import ProjectCard from '../components/marketplace/ProjectCard';
 import SearchBar from '../components/common/SearchBar';
 import Button from '../components/common/Button';
+import { useScrollSlider } from '../hooks/useScrollSlider';
+import SliderDots from '../components/common/SliderDots';
 
 export default function BrowseProjects() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -87,7 +89,7 @@ export default function BrowseProjects() {
     setSortBy('newest');
     setSearchParams({});
   };
-
+   const browse = useScrollSlider(projects.length);
   return (
     <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 w-full">
       {/* Header */}
@@ -229,16 +231,17 @@ export default function BrowseProjects() {
             </div>
           ) : (
             <>
-              <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden px-1">
-                <AnimatePresence mode="popLayout">
-                  {projects.map(project => (
-                    <motion.div key={project.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }} className="flex-none w-[85vw] snap-start">
-                      <ProjectCard project={project} />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
+              <div ref={browse.scrollRef} onScroll={browse.onScroll} className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden px-1">
+  <AnimatePresence mode="popLayout">
+    {projects.map(project => (
+      <motion.div key={project.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }} className="flex-none w-[85vw] snap-start">
+        <ProjectCard project={project} />
+      </motion.div>
+    ))}
+  </AnimatePresence>
+</div>
+<SliderDots count={projects.length} activeIndex={browse.activeIndex} />
               <motion.div layout className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <AnimatePresence mode="popLayout">
                   {projects.map(project => (

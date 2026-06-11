@@ -14,6 +14,8 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 import { projectsService } from '../services/projectsService';
 import { categoriesService } from '../services/categoriesService';
 import { designSystem } from '../styles/designSystem/constants';
+import { useScrollSlider } from '../hooks/useScrollSlider';
+import SliderDots from '../components/common/SliderDots';
 
 export default function Homepage() {
   const navigate = useNavigate();
@@ -85,6 +87,11 @@ export default function Homepage() {
       rating: 5
     }
   ];
+
+  const trending = useScrollSlider(trendingProjects.length);
+  const newlyAdded = useScrollSlider(newlyAddedProjects.length);
+  const topSelling = useScrollSlider(topSellingProjects.length);
+  const testimonialSlider = useScrollSlider(testimonials.length);
 
   return (
     <div className="w-full flex flex-col gap-16 md:gap-24">
@@ -162,13 +169,14 @@ export default function Homepage() {
             </div>
           ) : (
             <>
-              <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+              <div ref={trending.scrollRef} onScroll={trending.onScroll} className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
                 {trendingProjects.map(project => (
                   <div key={project.id} className="flex-none w-[85vw] snap-start">
                     <ProjectCard project={project} />
                   </div>
                 ))}
               </div>
+              <SliderDots count={trendingProjects.length} activeIndex={trending.activeIndex} />
               <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {trendingProjects.map(project => <ProjectCard key={project.id} project={project} />)}
               </div>
@@ -194,13 +202,14 @@ export default function Homepage() {
           </div>
         ) : (
           <>
-            <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+            <div ref={newlyAdded.scrollRef} onScroll={newlyAdded.onScroll} className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
               {newlyAddedProjects.map(project => (
                 <div key={project.id} className="flex-none w-[85vw] snap-start">
                   <ProjectCard project={project} />
                 </div>
               ))}
             </div>
+            <SliderDots count={newlyAddedProjects.length} activeIndex={newlyAdded.activeIndex} />
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {newlyAddedProjects.map(project => <ProjectCard key={project.id} project={project} />)}
             </div>
@@ -242,13 +251,14 @@ export default function Homepage() {
           </div>
         ) : (
           <>
-            <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+            <div ref={topSelling.scrollRef} onScroll={topSelling.onScroll} className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
               {topSellingProjects.map(project => (
                 <div key={project.id} className="flex-none w-[85vw] snap-start">
                   <ProjectCard project={project} />
                 </div>
               ))}
             </div>
+            <SliderDots count={topSellingProjects.length} activeIndex={topSelling.activeIndex} />
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {topSellingProjects.map(project => <ProjectCard key={project.id} project={project} />)}
             </div>
@@ -263,13 +273,14 @@ export default function Homepage() {
             <span className="text-xs font-bold uppercase tracking-wider text-secondary">Reviews</span>
             <h2 className="text-2xl md:text-3xl font-extrabold text-white">What Developers Say</h2>
           </div>
-          <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+          <div ref={testimonialSlider.scrollRef} onScroll={testimonialSlider.onScroll} className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
             {testimonials.map((t, i) => (
               <div key={i} className="flex-none w-[85vw] snap-start">
                 <TestimonialCard testimonial={t} />
               </div>
             ))}
           </div>
+          <SliderDots count={testimonials.length} activeIndex={testimonialSlider.activeIndex} />
           <div className="hidden md:grid md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => <TestimonialCard key={i} testimonial={t} />)}
           </div>

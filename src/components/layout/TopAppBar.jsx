@@ -12,12 +12,10 @@ export default function TopAppBar() {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2 focus:ring-2 focus:ring-primary focus:rounded" aria-label="InnovateGuide Home">
-          <svg className="w-8 h-8 text-primary" viewBox="0 0 100 100" fill="currentColor">
-            <circle cx="50" cy="50" r="45" className="fill-primary" />
-            <polygon points="30,40 70,50 30,60" className="fill-secondary" />
-          </svg>
-          <span className="font-bold text-lg tracking-tight text-neutral-dark dark:text-white">InnovateGuide</span>
-        </Link>
+  <img src="/src/assets/IG_LOGO.png" alt="InnovateGuide" className="h-8 w-auto block dark:hidden" />
+  <img src="/src/assets/IG_whiteLOGO.png" alt="InnovateGuide" className="h-8 w-auto hidden dark:block" />
+  <span className="font-bold text-lg tracking-tight text-neutral-dark dark:text-white">InnovateGuide</span>
+</Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Desktop Main Navigation">

@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { motion } from 'framer-motion';
+import igLogo from '../../assets/IG_LOGO.png';
+import igWhiteLogo from '../../assets/IG_whiteLOGO.png';
 
 export default function TopNavbar({ onToggleMobileMenu, isMobileMenuOpen }) {
   const { user } = useAuth();
@@ -28,8 +30,8 @@ export default function TopNavbar({ onToggleMobileMenu, isMobileMenuOpen }) {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2" aria-label="InnovateGuide Home">
-  <img src="/src/assets/IG_LOGO.png" alt="InnovateGuide" className="h-8 w-auto block dark:hidden" />
-  <img src="/src/assets/IG_whiteLOGO.png" alt="InnovateGuide" className="h-8 w-auto hidden dark:block" />
+  <img src={igLogo} alt="InnovateGuide" className="h-8 w-auto block dark:hidden" />
+<img src={igWhiteLogo} alt="InnovateGuide" className="h-8 w-auto hidden dark:block" />
   <span className="font-bold text-lg tracking-tight text-neutral-dark dark:text-[#F1F5F9]">InnovateGuide</span>
 </Link>
 

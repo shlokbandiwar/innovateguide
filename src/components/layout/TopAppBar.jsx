@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import igLogo from '../../assets/IG_LOGO.png';
+import igWhiteLogo from '../../assets/IG_whiteLOGO.png';
 
 export default function TopAppBar() {
   const { user, logout } = useAuth();
@@ -12,8 +14,8 @@ export default function TopAppBar() {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2 focus:ring-2 focus:ring-primary focus:rounded" aria-label="InnovateGuide Home">
-  <img src="/src/assets/IG_LOGO.png" alt="InnovateGuide" className="h-8 w-auto block dark:hidden" />
-  <img src="/src/assets/IG_whiteLOGO.png" alt="InnovateGuide" className="h-8 w-auto hidden dark:block" />
+  <img src={igLogo} alt="InnovateGuide" className="h-8 w-auto block dark:hidden" />
+<img src={igWhiteLogo} alt="InnovateGuide" className="h-8 w-auto hidden dark:block" />
   <span className="font-bold text-lg tracking-tight text-neutral-dark dark:text-white">InnovateGuide</span>
 </Link>
 

@@ -20,15 +20,13 @@ export default function MainLayout() {
   const handleCloseMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-surface dark:bg-neutral-dark/95 transition-colors duration-300">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-[#0F172A] transition-colors duration-300">
       <TopNavbar onToggleMobileMenu={handleToggleMenu} isMobileMenuOpen={isMobileMenuOpen} />
       <MobileNavbar isOpen={isMobileMenuOpen} onClose={handleCloseMenu} />
       <main className="flex-grow pb-16 md:pb-0">
         <Outlet />
       </main>
-      <div className="hidden sm:block">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

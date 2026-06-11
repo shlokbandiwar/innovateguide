@@ -19,30 +19,24 @@ export default function AdminLayout() {
   };
 
   return (
-    <div className="min-h-screen flex bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen flex bg-[#F1F5F9] dark:bg-[#0F172A] transition-colors duration-300">
 
-      {/* Overlay for mobile */}
       {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-20 md:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
+        <div className="fixed inset-0 bg-black/40 z-20 md:hidden" onClick={() => setSidebarOpen(false)} />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar — always primary-container, looks good in both modes */}
       <aside className={`
         fixed top-0 left-0 h-full w-64 bg-primary-container text-white z-30
         flex flex-col transition-transform duration-300
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:static md:z-auto
       `}>
-        {/* Logo */}
         <div className="px-6 py-5 border-b border-white/10 flex items-center gap-3">
           <span className="material-symbols-outlined text-secondary">admin_panel_settings</span>
           <span className="font-extrabold text-lg tracking-tight">IG Admin</span>
         </div>
 
-        {/* Nav */}
         <nav className="flex flex-col gap-1 p-4 flex-1">
           {navItems.map(item => (
             <NavLink
@@ -63,7 +57,6 @@ export default function AdminLayout() {
           ))}
         </nav>
 
-        {/* Logout */}
         <div className="p-4 border-t border-white/10">
           <button
             onClick={handleLogout}
@@ -77,22 +70,17 @@ export default function AdminLayout() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Top bar */}
-        <header className="bg-white dark:bg-neutral-dark border-b border-neutral-outline/20 px-4 py-3 flex items-center gap-4 sticky top-0 z-10">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="md:hidden text-neutral-dark dark:text-white"
-          >
+        <header className="bg-white dark:bg-[#1E293B] border-b border-gray-200 dark:border-[#334155] px-4 py-3 flex items-center gap-4 sticky top-0 z-10 transition-colors duration-300">
+          <button onClick={() => setSidebarOpen(true)} className="md:hidden text-neutral-dark dark:text-[#F1F5F9]">
             <span className="material-symbols-outlined">menu</span>
           </button>
-          <span className="font-bold text-neutral-dark dark:text-white text-sm">InnovateGuide Admin</span>
+          <span className="font-bold text-neutral-dark dark:text-[#F1F5F9] text-sm">InnovateGuide Admin</span>
           <div className="ml-auto flex items-center gap-2">
-            <span className="text-xs text-neutral-muted">admin@innovateguide.com</span>
+            <span className="text-xs text-neutral-muted dark:text-[#94A3B8]">admin@innovateguide.com</span>
             <span className="w-7 h-7 rounded-full bg-primary text-white text-xs flex items-center justify-center font-bold">A</span>
           </div>
         </header>
 
-        {/* Page content */}
         <main className="flex-1 p-6 overflow-y-auto">
           <Outlet />
         </main>

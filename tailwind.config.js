@@ -9,29 +9,38 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#1B5573",        // Primary Navy
-          container: "#2D6482",      // Hero background
+          DEFAULT: "#1B5573",
+          container: "#2D6482",
         },
         secondary: {
-          DEFAULT: "#E8521A",        // Accent Orange
-          container: "#FC6028",      // Accent Orange hover
+          DEFAULT: "#E8521A",
+          container: "#FC6028",
         },
         surface: {
-          DEFAULT: "#FFFFFF",        // Page Background (White)
+          DEFAULT: "#FFFFFF",
           container: {
-            lowest: "#FFFFFF",       // Card Background (White)
-            low: "#F5FAFF",          // Alternate Section Background (Light blue)
-            high: "#E5E7EB",         // Border Color
-            highest: "#D6DDE5",      // Subtle borders / outlines
+            lowest: "#FFFFFF",
+            low: "#F5FAFF",
+            high: "#E5E7EB",
+            highest: "#D6DDE5",
           }
         },
         neutral: {
-          dark: "#1B3A4B",           // Dark Heading Text
-          muted: "#4B5563",          // Body Text
-          outline: "#E5E7EB",        // Border Color
-          outlineVariant: "#D6DDE5", // Input border color (#D6DDE5)
+          dark: "#1B3A4B",
+          muted: "#4B5563",
+          outline: "#E5E7EB",
+          outlineVariant: "#D6DDE5",
+        },
+        // Dark mode palette
+        dark: {
+          bg: "#0F172A",           // Page background
+          surface: "#1E293B",      // Card/panel background
+          elevated: "#263244",     // Elevated cards
+          border: "#334155",       // Borders
+          text: "#F1F5F9",         // Primary text
+          muted: "#94A3B8",        // Muted text
+          heading: "#E2E8F0",      // Headings
         }
-
       },
       borderRadius: {
         DEFAULT: "0.25rem",
@@ -53,4 +62,3 @@ export default {
   },
   plugins: [],
 }
-

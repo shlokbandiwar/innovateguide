@@ -12,16 +12,14 @@ export const ThemeProvider = ({ children }) => {
     }
   });
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-    // Always remove 'dark' class to ensure the website stays strictly light-themed
-    root.classList.remove('dark');
-    try {
-      localStorage.setItem('theme', theme);
-    } catch (e) {
-      // Ignore storage errors
-    }
-  }, [theme]);
+useEffect(() => {
+  const root = window.document.documentElement;
+  root.classList.remove('light', 'dark');
+  root.classList.add(theme);
+  try {
+    localStorage.setItem('theme', theme);
+  } catch (e) {}
+}, [theme]);
 
 
   const toggleTheme = () => {

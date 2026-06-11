@@ -291,26 +291,46 @@ export default function BrowseProjects() {
               </Button>
             </div>
           ) : (
-            <motion.div 
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              <AnimatePresence mode="popLayout">
-                {projects.map(project => (
-                  <motion.div
-                    key={project.id}
-                    layout
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ProjectCard project={project} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          )}
+  <>
+    {/* Mobile: full-width swipe slider */}
+<div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden px-1">
+  <AnimatePresence mode="popLayout">
+    {projects.map(project => (
+      <motion.div
+        key={project.id}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
+        transition={{ duration: 0.2 }}
+        className="flex-none w-[85vw] snap-start"
+      >
+        <ProjectCard project={project} />
+      </motion.div>
+    ))}
+  </AnimatePresence>
+</div>
+    {/* Desktop: normal grid */}
+    <motion.div
+      layout
+      className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      <AnimatePresence mode="popLayout">
+        {projects.map(project => (
+          <motion.div
+            key={project.id}
+            layout
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ProjectCard project={project} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </motion.div>
+  </>
+)}
         </section>
       </div>
     </div>

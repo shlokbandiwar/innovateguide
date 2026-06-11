@@ -180,18 +180,27 @@ export default function Homepage() {
           </div>
           
           {loadingTrending ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {renderCardSkeleton()}
-              {renderCardSkeleton()}
-              {renderCardSkeleton()}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {trendingProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          )}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {renderCardSkeleton()}
+    {renderCardSkeleton()}
+    {renderCardSkeleton()}
+  </div>
+) : (
+  <>
+    <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+      {trendingProjects.map(project => (
+        <div key={project.id} className="flex-none w-[85vw] snap-start">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {trendingProjects.map(project => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </div>
+  </>
+)}
         </div>
       </section>
 
@@ -208,18 +217,27 @@ export default function Homepage() {
         </div>
 
         {loadingNew ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {renderCardSkeleton()}
-            {renderCardSkeleton()}
-            {renderCardSkeleton()}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {newlyAddedProjects.map(project => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {renderCardSkeleton()}
+    {renderCardSkeleton()}
+    {renderCardSkeleton()}
+  </div>
+) : (
+  <>
+    <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+      {newlyAddedProjects.map(project => (
+        <div key={project.id} className="flex-none w-[85vw] snap-start">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {newlyAddedProjects.map(project => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </div>
+  </>
+)}
       </section>
 
       {/* 7. Categories Section */}
@@ -255,18 +273,27 @@ export default function Homepage() {
         </div>
 
         {loadingTopSelling ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {renderCardSkeleton()}
-            {renderCardSkeleton()}
-            {renderCardSkeleton()}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {topSellingProjects.map(project => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {renderCardSkeleton()}
+    {renderCardSkeleton()}
+    {renderCardSkeleton()}
+  </div>
+) : (
+  <>
+    <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden">
+      {topSellingProjects.map(project => (
+        <div key={project.id} className="flex-none w-[85vw] snap-start">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {topSellingProjects.map(project => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </div>
+  </>
+)}
       </section>
 
       {/* 9. Testimonials Section */}
@@ -285,22 +312,25 @@ export default function Homepage() {
       </section>
 
       {/* 10. CTA Section & Newsletter */}
-      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full py-12 bg-primary-container rounded-2xl text-white flex flex-col md:flex-row items-center justify-between gap-8 px-8 md:px-12 relative overflow-hidden bg-grid-dots-white">
-        <div className="flex flex-col gap-3 max-w-xl text-center md:text-left z-10">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Have a codebase to sell, or need customization?</h2>
-          <p className="text-sm text-gray-200 leading-relaxed">
-            List your project for passive income, or match with developer squads ready to help customize existing repositories.
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-4 shrink-0 z-10">
-          <Link to="/sell">
-            <Button variant="accent" size="lg">List Your Project</Button>
-          </Link>
-          <Link to="/custom-request">
-            <Button variant="secondary" size="lg" className="border-white text-white hover:bg-white/10">Request Custom Build</Button>
-          </Link>
-        </div>
-      </section>
+      {/* 10. CTA Section & Newsletter */}
+<section className="max-w-container-max mx-auto px-4 md:px-margin-desktop w-full">
+  <div className="py-12 bg-primary-container rounded-2xl text-white flex flex-col md:flex-row items-center justify-between gap-8 px-8 md:px-12 relative overflow-hidden bg-grid-dots-white">
+    <div className="flex flex-col gap-3 max-w-xl text-center md:text-left z-10">
+      <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Have a codebase to sell, or need customization?</h2>
+      <p className="text-sm text-gray-200 leading-relaxed">
+        List your project for passive income, or match with developer squads ready to help customize existing repositories.
+      </p>
+    </div>
+    <div className="flex flex-col sm:flex-row gap-4 shrink-0 z-10">
+      <Link to="/sell">
+        <Button variant="accent" size="lg">List Your Project</Button>
+      </Link>
+      <Link to="/custom-request">
+        <Button variant="secondary" size="lg" className="border-white text-white hover:bg-white/10">Request Custom Build</Button>
+      </Link>
+    </div>
+  </div>
+</section>
 
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full pb-16">
         <NewsletterForm />

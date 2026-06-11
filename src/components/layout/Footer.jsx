@@ -71,9 +71,12 @@ export default function Footer() {
       </div>
       
       {/* Bottom Copyright */}
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-10 pt-6 border-t border-neutral-outline/10 text-center text-xs text-neutral-muted">
-        &copy; {new Date().getFullYear()} InnovateGuide Marketplace. All rights reserved.
-      </div>
+<div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-10 pt-6 border-t border-neutral-outline/10 flex items-center justify-between text-xs text-neutral-muted">
+  <span>&copy; {new Date().getFullYear()} InnovateGuide Marketplace. All rights reserved.</span>
+  <Link to="/admin/login" className="text-neutral-muted/40 hover:text-neutral-muted transition-colors">
+    Admin
+  </Link>
+</div>
     </footer>
 
   );
